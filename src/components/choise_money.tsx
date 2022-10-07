@@ -4,12 +4,17 @@ import { CryptoDropdown, CryptoToken } from "./crypto_dropdown";
 
 export function ChoiceMoney() {
   const [mone_in, setMoney] = useState("");
+  const [is_open_menu, chang_menu_status] = useState(true);
 
   const [is_open_dropdown, setDropdown] = useState<CryptoToken | undefined>();
 
   const close_menu = (name: CryptoToken | undefined) => {
     setDropdown(name);
-    console.log(name);
+    chang_menu_status(false);
+  };
+
+  const open_menu = () => {
+    chang_menu_status(true);
   };
 
   return (
@@ -23,8 +28,8 @@ export function ChoiceMoney() {
             placeholder="0.0"
             onChange={(e) => setMoney(e.target.value)}
           />
-          <CryptoBlock />
-          <CryptoDropdown onClose={close_menu} />
+          <CryptoBlock onOpen={open_menu} />
+          {is_open_menu ? <CryptoDropdown onClose={close_menu} /> : <div></div>}
         </div>
 
         {/* <button type="submit">Кнопка отправить</button> */}

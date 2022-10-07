@@ -64,14 +64,14 @@ export function CryptoDropdown(props: ChildProps) {
         <div className="dropdown-content">
           <div className="dropdown-label">
             <p>Select token</p>
-            <button
+            <a
               className="close-btn"
               onClick={() => {
-                console.log("CLOSE");
+                press_close({ src: "krest.png", name: "" });
               }}
             >
               ×
-            </button>
+            </a>
           </div>
           <input
             type="text"
